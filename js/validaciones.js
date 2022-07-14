@@ -9,7 +9,7 @@ export function valida(input){
     }else{
         input.parentElement.classList.add("input-container--invalid");
         input.parentElement.querySelector(".input-message-error").innerrHTML= mostrarMensajesDeError(tipoDeInput,input);
-    }
+    };
 };
 
 const tipoDeErrores = [
@@ -35,7 +35,24 @@ const mensajesDeError = {
         valueMissing: "El campo fecha no puede estar vacio",
         customError: "debes tener al menos 18 años de edad pilluelo",
     },
-}
+    numero: {
+        valueMissing: "Este campo no puede estar vacio",
+        patterMismatch: "El formato requerido es xxxxxxxxx 9 numeros",
+    },
+    direccion: {
+        valueMissing: "El campo direccion no puede estar vacio",
+        patterMismatch: "La direccion debe tener entre 10 y 40 caracteres",
+    },
+    ciudad: {
+        valueMissing: "El campo ciudad no puede estar vacio",
+        patterMismatch: "La ciudad debe tener entre 10 y 40 caracteres",
+    },
+    estado: {
+        valueMissing: "El campo estado no puede estar vacio",
+        patterMismatch: "El estado debe tener entre 10 y 40 caracteres",
+    },
+};
+
 const validadores = {
     nacimiento: (input)=> validarNacimiento(input),
 };
@@ -47,7 +64,7 @@ function validarNacimiento(input){
         mensaje = "Debes tener al menos 18 años de edad pilluelo";
     };
     input.setCustomValidity(mensaje);
-}
+};
 
 function mostrarMensajesDeError(tipoDeInput,input){
     let mensaje = "";
@@ -60,7 +77,7 @@ function mostrarMensajesDeError(tipoDeInput,input){
         };
     });
 return mensaje;
-}
+};
 
 function mayorEdad (fecha){
     const fechaActual = new Date();
@@ -70,4 +87,4 @@ function mayorEdad (fecha){
         fecha.getUTCDate()
     );
     return diferenciaFechas<=fechaActual;
-}
+};
