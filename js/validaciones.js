@@ -5,10 +5,10 @@ export function valida(input){
     };
     if(input.validity.valid){
         input.parentElement.classList.remove("input-container--invalid");
-        input.parentElement.classList.remove("input-message-error").innerrHTML= "";
+        input.parentElement.querySelector(".input-message-error").innerrHTML= "";
     }else{
         input.parentElement.classList.add("input-container--invalid");
-        input.parentElement.querySelector(".input-message-error").innerrHTML= mostrartMensajesDeError(tipoDeInput,input);
+        input.parentElement.querySelector(".input-message-error").innerrHTML= mostrarMensajesDeError(tipoDeInput,input);
     }
 };
 
@@ -49,7 +49,7 @@ function validarNacimiento(input){
     input.setCustomValidity(mensaje);
 }
 
-function mostrartMensajesDeError(tipoDeInput,input){
+function mostrarMensajesDeError(tipoDeInput,input){
     let mensaje = "";
     tipoDeErrores.forEach((error) => {
         if(input.validity[error]){
